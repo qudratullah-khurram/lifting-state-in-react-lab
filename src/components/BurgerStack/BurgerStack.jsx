@@ -1,7 +1,25 @@
-// src/components/BurgerStack/BurgerStack.jsx
 
-const BurgerStack = (props) => {
-  return <ul>// map through props.ingredients</ul>;
+import Ingredient from '../Ingredient/Ingredient';
+
+const BurgerStack = ({ stack, onRemove }) => {
+  return (
+
+    <ul>
+    {stack.length === 0 ? (
+    <li>No Ingredients</li>
+    ) : (
+    
+    stack.map((ingredient, index) => (
+    <Ingredient
+    key={index}
+    ingredient={ingredient}
+    onClick={() => onRemove(index)}
+    buttonText="X"
+    />
+    ))
+      )}
+    </ul>
+  );
 };
 
 export default BurgerStack;
